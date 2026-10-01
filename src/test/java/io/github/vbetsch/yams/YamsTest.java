@@ -165,6 +165,18 @@ class YamsTest {
     }
 
     @Test
+    void threeOfAKind_return10Points_whenGivenThreeDicesTwos() {
+        // Arrange
+        Yams yams = new Yams();
+
+        // Act
+        int result = yams.computeScore(List.of(2, 2, 2, 1, 3), CategoryEnum.THREE_OF_A_KIND);
+
+        // Assert
+        assertEquals(10, result);
+    }
+
+    @Test
     void threeOfAKind_returnIllegalArgumentException_whenGivenLargeStraight() {
         // Arrange
         Yams yams = new Yams();
