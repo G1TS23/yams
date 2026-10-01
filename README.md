@@ -33,7 +33,7 @@ The following categories exists:
   the player scores 0. For example, 1, 1, 2, 3, 3 placed on “two pairs” gives 8.
 - [x] Three of a kind: If there are three dice with the same number, the player scores the sum of these dice. Otherwise,
   the player scores 0. For example, 3, 3, 3, 4, 5 places on “three of a kind” gives 9.
-- [ ] Four of a kind: If there are four dice with the same number, the player scores the sum of these dice. Otherwise,
+- [x] Four of a kind: If there are four dice with the same number, the player scores the sum of these dice. Otherwise,
   the player scores 0. For example, 2, 2, 2, 2, 5 places on “four of a kind” gives 8.
 - [ ] Small straight: If the dice read 1,2,3,4,5, the player scores 15 (the sum of all the dice), otherwise 0.
 - [ ] Large straight: If the dice read 2,3,4,5,6, the player scores 20 (the sum of all the dice), otherwise 0.
