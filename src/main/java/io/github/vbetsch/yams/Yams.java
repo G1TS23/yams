@@ -44,23 +44,15 @@ public class Yams {
         return reducedRoll.count() == (5 - duplicatesNumber + 1);
     }
 
-    private boolean rollContainsThreeOfAKind(List<Integer> roll) {
-        return this.containsDuplicatesNth(roll, 3);
-    }
-
-    private boolean rollContainsFourOfAKind(List<Integer> roll) {
-        return this.containsDuplicatesNth(roll, 4);
-    }
-
     private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
-        if (!this.rollContainsThreeOfAKind(roll)) {
+        if (!this.containsDuplicatesNth(roll, 3)) {
             throw new CategoryNotAuthorizedForThisRollError(CategoryEnum.THREE_OF_A_KIND);
         }
         return this.calculateSumOfDices(roll);
     }
 
     private int handleFourOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
-        if (!this.rollContainsFourOfAKind(roll)) {
+        if (!this.containsDuplicatesNth(roll, 4)) {
             throw new CategoryNotAuthorizedForThisRollError(CategoryEnum.FOUR_OF_A_KIND);
         }
         return this.calculateSumOfDices(roll);
