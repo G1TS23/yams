@@ -36,20 +36,20 @@ public class Yams {
                 .sum();
     }
 
-    private boolean rollContainsThreeOfAKind(List<Integer> roll) {
+    private boolean containsDuplicatesNth(List<Integer> roll, int duplicatesNumber) {
         IntStream reducedRoll = roll
                 .stream()
                 .mapToInt(Integer::intValue)
                 .distinct();
-        return reducedRoll.count() == 3;
+        return reducedRoll.count() == (5 - duplicatesNumber + 1);
+    }
+
+    private boolean rollContainsThreeOfAKind(List<Integer> roll) {
+        return this.containsDuplicatesNth(roll, 3);
     }
 
     private boolean rollContainsFourOfAKind(List<Integer> roll) {
-        IntStream reducedRoll = roll
-                .stream()
-                .mapToInt(Integer::intValue)
-                .distinct();
-        return reducedRoll.count() == 2;
+        return this.containsDuplicatesNth(roll, 4);
     }
 
     private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
