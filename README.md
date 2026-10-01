@@ -31,7 +31,7 @@ The following categories exists:
   gives 8.
 - [ ] Two pairs: If there are two pairs of dice with the same number, the player scores the sum of these dice. If not,
   the player scores 0. For example, 1, 1, 2, 3, 3 placed on “two pairs” gives 8.
-- [ ] Three of a kind: If there are three dice with the same number, the player scores the sum of these dice. Otherwise,
+- [x] Three of a kind: If there are three dice with the same number, the player scores the sum of these dice. Otherwise,
   the player scores 0. For example, 3, 3, 3, 4, 5 places on “three of a kind” gives 9.
 - [ ] Four of a kind: If there are four dice with the same number, the player scores the sum of these dice. Otherwise,
   the player scores 0. For example, 2, 2, 2, 2, 5 places on “four of a kind” gives 8.
