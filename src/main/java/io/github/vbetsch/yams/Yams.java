@@ -5,11 +5,10 @@ import java.util.stream.IntStream;
 
 public class Yams {
     private int handleChanceScore(List<Integer> roll) {
-        int result = 0;
-        for (Integer integer : roll) {
-            result += integer;
-        }
-        return result;
+        return roll
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     private int handleYamsScore(List<Integer> roll) {
