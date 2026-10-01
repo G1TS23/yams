@@ -165,7 +165,7 @@ class YamsTest {
     }
 
     @Test
-    void threeOfAKind_returnError_whenGivenLargeStraight() {
+    void threeOfAKind_returnIllegalArgumentException_whenGivenLargeStraight() {
         // Arrange
         Yams yams = new Yams();
 

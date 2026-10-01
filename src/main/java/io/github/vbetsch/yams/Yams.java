@@ -46,7 +46,7 @@ public class Yams {
 
     private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
         if (!this.rollContainsThreeOfAKind(roll)) {
-            throw new IllegalArgumentException("We cannot compute score with category ThreeOfAKind for this roll");
+            throw new CategoryNotAuthorizedForThisRollError();
         }
         return this.calculateSumOfDices(roll);
     }
