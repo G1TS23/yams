@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class YamsTest {
     @Test
@@ -161,5 +162,18 @@ class YamsTest {
 
         // Assert
         assertEquals(8, result);
+    }
+
+    @Test
+    void threeOfAKind_returnError_whenGivenLargeStraight() {
+        // Arrange
+        Yams yams = new Yams();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> yams.computeScore(List.of(1, 2, 3, 4, 5), CategoryEnum.THREE_OF_A_KIND),
+                "We cannot compute score with category ThreeOfAKind for this roll"
+        );
     }
 }

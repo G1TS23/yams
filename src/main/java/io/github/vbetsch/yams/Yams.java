@@ -33,12 +33,22 @@ public class Yams {
                 .sum();
     }
 
-    private int handleThreeOfAKindScore(List<Integer> combination) {
-        int result = 0;
-        for (Integer integer : combination) {
-            result += integer;
+    private boolean rollContainsThreeOfAKind(List<Integer> combination) {
+        IntStream reducedCombination = combination
+                .stream()
+                .mapToInt(Integer::intValue)
+                .distinct();
+        return reducedCombination.count() == 3;
+    }
+
+    private int handleThreeOfAKindScore(List<Integer> combination) throws IllegalArgumentException {
+        if (!this.rollContainsThreeOfAKind(combination)) {
+            throw new IllegalArgumentException("We cannot compute score with category ThreeOfAKind for this roll");
         }
-        return result;
+        return combination
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public int computeScore(List<Integer> combination, CategoryEnum category) {
