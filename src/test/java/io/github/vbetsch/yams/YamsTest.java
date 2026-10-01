@@ -188,4 +188,41 @@ class YamsTest {
                 "We cannot compute score with category ThreeOfAKind for this roll"
         );
     }
+
+    @Test
+    void fourOfAKind_return7Points_whenGivenFourDicesOnes() {
+        // Arrange
+        Yams yams = new Yams();
+
+        // Act
+        int result = yams.computeScore(List.of(1, 1, 1, 1, 3), CategoryEnum.FOUR_OF_A_KIND);
+
+        // Assert
+        assertEquals(7, result);
+    }
+
+    @Test
+    void fourOfAKind_return11Points_whenGivenFourDicesTwos() {
+        // Arrange
+        Yams yams = new Yams();
+
+        // Act
+        int result = yams.computeScore(List.of(2, 2, 2, 2, 3), CategoryEnum.FOUR_OF_A_KIND);
+
+        // Assert
+        assertEquals(11, result);
+    }
+
+    @Test
+    void fourOfAKind_returnIllegalArgumentException_whenGivenLargeStraight() {
+        // Arrange
+        Yams yams = new Yams();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> yams.computeScore(List.of(1, 2, 3, 4, 5), CategoryEnum.FOUR_OF_A_KIND),
+                "We cannot compute score with category FourOfAKind for this roll"
+        );
+    }
 }

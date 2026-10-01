@@ -44,9 +44,24 @@ public class Yams {
         return reducedRoll.count() == 3;
     }
 
+    private boolean rollContainsFourOfAKind(List<Integer> roll) {
+        IntStream reducedRoll = roll
+                .stream()
+                .mapToInt(Integer::intValue)
+                .distinct();
+        return reducedRoll.count() == 2;
+    }
+
     private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
         if (!this.rollContainsThreeOfAKind(roll)) {
-            throw new CategoryNotAuthorizedForThisRollError();
+            throw new CategoryNotAuthorizedForThisRollError(CategoryEnum.THREE_OF_A_KIND);
+        }
+        return this.calculateSumOfDices(roll);
+    }
+
+    private int handleFourOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
+        if (!this.rollContainsFourOfAKind(roll)) {
+            throw new CategoryNotAuthorizedForThisRollError(CategoryEnum.FOUR_OF_A_KIND);
         }
         return this.calculateSumOfDices(roll);
     }
@@ -62,6 +77,7 @@ public class Yams {
             case CategoryEnum.FIVES -> this.handleTopPartScores(roll, 5);
             case CategoryEnum.SIXES -> this.handleTopPartScores(roll, 6);
             case CategoryEnum.THREE_OF_A_KIND -> this.handleThreeOfAKindScore(roll);
+            case CategoryEnum.FOUR_OF_A_KIND -> this.handleFourOfAKindScore(roll);
             default -> 1000;
         };
     }
