@@ -57,7 +57,7 @@ class YamsTest {
     }
 
     @Test
-    void yams_return0Points_whenGivenCombinationWithDuplicates() {
+    void yams_return0Points_whenGivenRollWithDuplicates() {
         // Arrange
         Yams yams = new Yams();
 
@@ -69,7 +69,7 @@ class YamsTest {
     }
 
     @Test
-    void yams_return0Points_whenGivenCombinationWithoutDuplicates() {
+    void yams_return0Points_whenGivenRollWithoutDuplicates() {
         // Arrange
         Yams yams = new Yams();
 
@@ -81,7 +81,7 @@ class YamsTest {
     }
 
     @Test
-    void aces_return3Points_whenGivenCombinationWithThreeDicesAces() {
+    void aces_return3Points_whenGivenRollWithThreeDicesAces() {
         // Arrange
         Yams yams = new Yams();
 
@@ -93,7 +93,7 @@ class YamsTest {
     }
 
     @Test
-    void twos_return6Points_whenGivenCombinationWithThreeDicesTwos() {
+    void twos_return6Points_whenGivenRollWithThreeDicesTwos() {
         // Arrange
         Yams yams = new Yams();
 
@@ -105,7 +105,7 @@ class YamsTest {
     }
 
     @Test
-    void three_return9Points_whenGivenCombinationWithThreeDicesThrees() {
+    void three_return9Points_whenGivenRollWithThreeDicesThrees() {
         // Arrange
         Yams yams = new Yams();
 
@@ -117,7 +117,7 @@ class YamsTest {
     }
 
     @Test
-    void four_return12Points_whenGivenCombinationWithThreeDicesFours() {
+    void four_return12Points_whenGivenRollWithThreeDicesFours() {
         // Arrange
         Yams yams = new Yams();
 
@@ -129,7 +129,7 @@ class YamsTest {
     }
 
     @Test
-    void five_return15Points_whenGivenCombinationWithThreeDicesFives() {
+    void five_return15Points_whenGivenRollWithThreeDicesFives() {
         // Arrange
         Yams yams = new Yams();
 
@@ -141,7 +141,7 @@ class YamsTest {
     }
 
     @Test
-    void sixes_return18Points_whenGivenCombinationWithThreeDicesSixes() {
+    void sixes_return18Points_whenGivenRollWithThreeDicesSixes() {
         // Arrange
         Yams yams = new Yams();
 

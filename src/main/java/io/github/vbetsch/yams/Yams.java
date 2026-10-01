@@ -4,20 +4,20 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Yams {
-    private int handleChanceScore(List<Integer> combination) {
+    private int handleChanceScore(List<Integer> roll) {
         int result = 0;
-        for (Integer integer : combination) {
+        for (Integer integer : roll) {
             result += integer;
         }
         return result;
     }
 
-    private int handleYamsScore(List<Integer> combination) {
-        IntStream reducedCombination = combination
+    private int handleYamsScore(List<Integer> roll) {
+        IntStream reducedRoll = roll
                 .stream()
                 .mapToInt(Integer::intValue)
                 .distinct();
-        if (reducedCombination.count() == 1) {
+        if (reducedRoll.count() == 1) {
             IO.println("ITS A YAMS!!! GOOD GAME !!!");
             return 50;
         } else {
@@ -25,43 +25,43 @@ public class Yams {
         }
     }
 
-    private int handleTopPartScores(List<Integer> combination, int target) {
-        return combination
+    private int handleTopPartScores(List<Integer> roll, int target) {
+        return roll
                 .stream()
                 .filter(dice -> dice == target)
                 .mapToInt(Integer::intValue)
                 .sum();
     }
 
-    private boolean rollContainsThreeOfAKind(List<Integer> combination) {
-        IntStream reducedCombination = combination
+    private boolean rollContainsThreeOfAKind(List<Integer> roll) {
+        IntStream reducedRoll = roll
                 .stream()
                 .mapToInt(Integer::intValue)
                 .distinct();
-        return reducedCombination.count() == 3;
+        return reducedRoll.count() == 3;
     }
 
-    private int handleThreeOfAKindScore(List<Integer> combination) throws IllegalArgumentException {
-        if (!this.rollContainsThreeOfAKind(combination)) {
+    private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
+        if (!this.rollContainsThreeOfAKind(roll)) {
             throw new IllegalArgumentException("We cannot compute score with category ThreeOfAKind for this roll");
         }
-        return combination
+        return roll
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();
     }
 
-    public int computeScore(List<Integer> combination, CategoryEnum category) {
+    public int computeScore(List<Integer> roll, CategoryEnum category) {
         return switch (category) {
-            case CategoryEnum.CHANCE -> this.handleChanceScore(combination);
-            case CategoryEnum.YAMS -> this.handleYamsScore(combination);
-            case CategoryEnum.ACES -> this.handleTopPartScores(combination, 1);
-            case CategoryEnum.TWOS -> this.handleTopPartScores(combination, 2);
-            case CategoryEnum.THREES -> this.handleTopPartScores(combination, 3);
-            case CategoryEnum.FOURS -> this.handleTopPartScores(combination, 4);
-            case CategoryEnum.FIVES -> this.handleTopPartScores(combination, 5);
-            case CategoryEnum.SIXES -> this.handleTopPartScores(combination, 6);
-            case CategoryEnum.THREE_OF_A_KIND -> this.handleThreeOfAKindScore(combination);
+            case CategoryEnum.CHANCE -> this.handleChanceScore(roll);
+            case CategoryEnum.YAMS -> this.handleYamsScore(roll);
+            case CategoryEnum.ACES -> this.handleTopPartScores(roll, 1);
+            case CategoryEnum.TWOS -> this.handleTopPartScores(roll, 2);
+            case CategoryEnum.THREES -> this.handleTopPartScores(roll, 3);
+            case CategoryEnum.FOURS -> this.handleTopPartScores(roll, 4);
+            case CategoryEnum.FIVES -> this.handleTopPartScores(roll, 5);
+            case CategoryEnum.SIXES -> this.handleTopPartScores(roll, 6);
+            case CategoryEnum.THREE_OF_A_KIND -> this.handleThreeOfAKindScore(roll);
             default -> 1000;
         };
     }
