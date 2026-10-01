@@ -4,11 +4,15 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Yams {
-    private int handleChanceScore(List<Integer> roll) {
+    private int calculateSumOfDices(List<Integer> roll) {
         return roll
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    private int handleChanceScore(List<Integer> roll) {
+        return this.calculateSumOfDices(roll);
     }
 
     private int handleYamsScore(List<Integer> roll) {
@@ -44,10 +48,7 @@ public class Yams {
         if (!this.rollContainsThreeOfAKind(roll)) {
             throw new IllegalArgumentException("We cannot compute score with category ThreeOfAKind for this roll");
         }
-        return roll
-                .stream()
-                .mapToInt(Integer::intValue)
-                .sum();
+        return this.calculateSumOfDices(roll);
     }
 
     public int computeScore(List<Integer> roll, CategoryEnum category) {
