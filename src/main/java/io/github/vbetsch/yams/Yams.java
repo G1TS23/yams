@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Yams {
+    private final int DICES_AMOUNT = 5;
+
     private int calculateSumOfDices(List<Integer> roll) {
         return roll
                 .stream()
@@ -41,7 +43,7 @@ public class Yams {
                 .stream()
                 .mapToInt(Integer::intValue)
                 .distinct();
-        return reducedRoll.count() == (5 - duplicatesNumber + 1);
+        return reducedRoll.count() == (this.DICES_AMOUNT - duplicatesNumber + 1);
     }
 
     private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
