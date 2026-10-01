@@ -150,4 +150,16 @@ class YamsTest {
         // Assert
         assertEquals(18, result);
     }
+
+    @Test
+    void threeOfAKind_return3Points_whenGivenThreeDicesOnes() {
+        // Arrange
+        Yams yams = new Yams();
+
+        // Act
+        int result = yams.computeScore(List.of(1, 1, 1, 2, 3), CategoryEnum.THREE_OF_A_KIND);
+
+        // Assert
+        assertEquals(8, result);
+    }
 }

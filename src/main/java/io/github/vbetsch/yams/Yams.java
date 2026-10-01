@@ -33,6 +33,14 @@ public class Yams {
                 .sum();
     }
 
+    private int handleThreeOfAKindScore(List<Integer> combination) {
+        int result = 0;
+        for (Integer integer : combination) {
+            result += integer;
+        }
+        return result;
+    }
+
     public int computeScore(List<Integer> combination, CategoryEnum category) {
         return switch (category) {
             case CategoryEnum.CHANCE -> this.handleChanceScore(combination);
@@ -43,6 +51,7 @@ public class Yams {
             case CategoryEnum.FOURS -> this.handleTopPartScores(combination, 4);
             case CategoryEnum.FIVES -> this.handleTopPartScores(combination, 5);
             case CategoryEnum.SIXES -> this.handleTopPartScores(combination, 6);
+            case CategoryEnum.THREE_OF_A_KIND -> this.handleThreeOfAKindScore(combination);
             default -> 1000;
         };
     }
