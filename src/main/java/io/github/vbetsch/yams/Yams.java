@@ -60,7 +60,7 @@ public class Yams {
         return this.calculateSumOfDices(roll);
     }
 
-    public int computeScore(List<Integer> roll, CategoryEnum category) throws IllegalArgumentException {
+    public int computeScore(List<Integer> roll, CategoryEnum category) throws InvalidRollSizeError {
         if(roll.size() != Yams.DICES_AMOUNT) {
             throw new InvalidRollSizeError(roll.size());
         }
