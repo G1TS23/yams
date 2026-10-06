@@ -239,4 +239,32 @@ class YamsTest {
                 "Roll must contain exactly 5 dices"
         );
     }
+
+    @Test
+    void shouldThrowIllegalArgumentExceptionWhenGivenMoreThanFiveDices() {
+        // Arrange
+        Yams yams = new Yams();
+        List<Integer> roll = List.of(1, 2, 3, 4, 5, 6);
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> yams.computeScore(roll, CategoryEnum.CHANCE),
+                "Roll must contain exactly 5 dices"
+        );
+    }
+
+    @Test
+    void shouldThrowIllegalArgumentExceptionWhenGivenNoDice() {
+        // Arrange
+        Yams yams = new Yams();
+        List<Integer> roll = List.of();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> yams.computeScore(roll, CategoryEnum.CHANCE),
+                "Roll must contain exactly 5 dices"
+        );
+    }
 }

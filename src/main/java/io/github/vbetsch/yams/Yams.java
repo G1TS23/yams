@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Yams {
-    private final int DICES_AMOUNT = 5;
+    static final int DICES_AMOUNT = 5;
 
     private int calculateSumOfDices(List<Integer> roll) {
         return roll
@@ -43,7 +43,7 @@ public class Yams {
                 .stream()
                 .mapToInt(Integer::intValue)
                 .distinct();
-        return reducedRoll.count() == (this.DICES_AMOUNT - duplicatesNumber + 1);
+        return reducedRoll.count() == (Yams.DICES_AMOUNT - duplicatesNumber + 1);
     }
 
     private int handleThreeOfAKindScore(List<Integer> roll) throws IllegalArgumentException {
@@ -61,8 +61,8 @@ public class Yams {
     }
 
     public int computeScore(List<Integer> roll, CategoryEnum category) throws IllegalArgumentException {
-        if(roll.size() != this.DICES_AMOUNT) {
-            throw new IllegalArgumentException("Roll must contain exactly " + this.DICES_AMOUNT + " dices");
+        if(roll.size() != Yams.DICES_AMOUNT) {
+            throw new InvalidRollSizeError(roll.size());
         }
         return switch (category) {
             case CategoryEnum.CHANCE -> this.handleChanceScore(roll);
