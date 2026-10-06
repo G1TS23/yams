@@ -225,4 +225,18 @@ class YamsTest {
                 "We cannot compute score with category FourOfAKind for this roll"
         );
     }
+
+    @Test
+    void shouldThrowIllegalArgumentExceptionWhenGivenLessThanFiveDices() {
+        // Arrange
+        Yams yams = new Yams();
+        List<Integer> roll = List.of(1, 2, 3, 4);
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> yams.computeScore(roll, CategoryEnum.CHANCE),
+                "Roll must contain exactly 5 dices"
+        );
+    }
 }
