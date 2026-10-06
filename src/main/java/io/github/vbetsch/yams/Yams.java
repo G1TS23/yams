@@ -60,7 +60,10 @@ public class Yams {
         return this.calculateSumOfDices(roll);
     }
 
-    public int computeScore(List<Integer> roll, CategoryEnum category) {
+    public int computeScore(List<Integer> roll, CategoryEnum category) throws IllegalArgumentException {
+        if(roll.size() != this.DICES_AMOUNT) {
+            throw new IllegalArgumentException("Roll must contain exactly " + this.DICES_AMOUNT + " dices");
+        }
         return switch (category) {
             case CategoryEnum.CHANCE -> this.handleChanceScore(roll);
             case CategoryEnum.YAMS -> this.handleYamsScore(roll);
